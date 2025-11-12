@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NENLUXE — Fashion, Beauty & Accessories</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+  <div class="container nav-inner">
+    <!-- Left: Logo + Brand -->
+    <div class="nav-left" onclick="scrollToTop()">
+      <img src="images/logo.jpg" alt="NenLuxe Logo" class="logo-img" />
+      <div>
+        <div class="brand">NENLUXE</div>
+        <span class="brand-tagline">Timeless Elegance</span>
+      </div>
+    </div>
+
+    <!-- Center: Navigation Links -->
+    <div class="nav-center">
+      <a href="javascript:void(0)" onclick="scrollToTop()">Home</a>
+      <a href="javascript:void(0)" onclick="scrollToSection('collections')">Collections</a>
+      <a href="javascript:void(0)" onclick="scrollToSection('products')">Shop</a>
+      <a href="javascript:void(0)" onclick="scrollToSection('about')">About</a>
+      <a href="javascript:void(0)" onclick="openHelp()">Contact</a>
+    </div>
+
+    <!-- Right: Icons -->
+    <div class="nav-right">
+      <!-- Search -->
+      <div class="search-input">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="black" stroke-width="2" />
+          <path d="M21 21l-4.35-4.35" stroke="black" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <input id="searchInput" type="text" placeholder="Search..." onkeydown="if(event.key==='Enter') searchProducts();" />
+      </div>
+
+      <!-- Wishlist -->
+      <button class="icon-btn" onclick="openWishlist()" aria-label="Wishlist">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
+        </svg>
+        <span class="badge" id="wishlistCount">0</span>
+      </button>
+
+      <!-- Cart -->
+      <button class="icon-btn" onclick="openCart()" aria-label="Cart">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+
+      <!-- Profile -->
+      <button class="icon-btn" onclick="openSettings()" aria-label="Profile">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+          <circle cx="12" cy="7" r="4" />
+          <path d="M5.5 21a7 7 0 0 1 13 0" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO SLIDESHOW -->
+  <section class="hero" id="hero">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image: url('images/slide4.jpg');"></div>
+      <div class="hero-content">
+        <h1>Winter Collection 2024</h1>
+        <p>Embrace the season with our curated selection of luxury essentials.</p>
+        <button class="hero-btn" onclick="scrollToSection('collections')">Explore Now</button>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image: url('images/slide1.jpg');"></div>
+      <div class="hero-content">
+        <h1>Timeless Elegance</h1>
+        <p>Elevate your everyday look with timeless craftsmanship and bold minimalism.</p>
+        <button class="hero-btn" onclick="scrollToSection('products')">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image: url('images/slide3.png');"></div>
+      <div class="hero-content">
+        <h1>Holiday Essentials</h1>
+        <p>Make every moment memorable with our exclusive holiday collection.</p>
+        <button class="hero-btn" onclick="filterProducts('holiday'); scrollToSection('products')">Shop Holiday</button>
+      </div>
+    </div>
+
+    <button class="hero-arrow left"  aria-label="Previous Slide">‹</button>
+    <button class="hero-arrow right"  aria-label="Next Slide">›</button>
+
+    <div class="hero-indicators">
+      <div class="indicator active" onclick="goToSlide(0)" aria-label="Slide 1"></div>
+      <div class="indicator" onclick="goToSlide(1)" aria-label="Slide 2"></div>
+      <div class="indicator" onclick="goToSlide(2)" aria-label="Slide 3"></div>
+    </div>
+
+    <div class="offer-ticker" aria-hidden="false">
+      <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-item">✨ Exclusive: 20% off — New Autumn Collection ✨</div>
+        <div class="ticker-item">Free Shipping over $150 — Limited Time</div>
+        <div class="ticker-item">Complimentary Gift Wrapping with every order</div>
+        <div class="ticker-item">Shop the Capsule — Handcrafted Essentials</div>
+
+        <div class="ticker-item">✨ Exclusive: 20% off — New Autumn Collection ✨</div>
+        <div class="ticker-item">Free Shipping over $150 — Limited Time</div>
+        <div class="ticker-item">Complimentary Gift Wrapping with every order</div>
+        <div class="ticker-item">Shop the Capsule — Handcrafted Essentials</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="bestsellers" id="bestsellers">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Customer Favorites</p>
+        <h2 class="section-title">Best Sellers</h2>
+      </div>
+
+      <div class="bestseller-scroll-wrapper">
+        <button class="best-arrow left" id="bestLeft" aria-label="Scroll left">‹</button>
+        <div class="bestseller-scroll" id="bestsellerScroll"></div>
+        <button class="best-arrow right" id="bestRight" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Explore Our</p>
+        <h2 class="section-title" id="collection-title">Collections</h2>
+      </div>
+
+      <div class="collections-grid">
+        <div class="collection-card" onclick="filterProducts('winter'); scrollToSection('products')">
+          <div class="collection-bg" style="background-image: url('images/collection-winter.jpg');"></div>
+          <div class="collection-overlay"></div>
+          <div class="collection-content">
+            <h3>Winter Collection</h3>
+            <p>Cozy essentials for the cold season</p>
+            <button class="collection-btn">Shop Winter</button>
+          </div>
+        </div>
+
+        <div class="collection-card" onclick="filterProducts('holiday'); scrollToSection('products')">
+          <div class="collection-bg" style="background-image: url('images/collection-holiday.jpg');"></div>
+          <div class="collection-overlay"></div>
+          <div class="collection-content">
+            <h3>Holiday Specials</h3>
+            <p>Festive pieces for celebration</p>
+            <button class="collection-btn">Shop Holiday</button>
+          </div>
+        </div>
+
+        <div class="collection-card" onclick="filterProducts('christmas'); scrollToSection('products')">
+          <div class="collection-bg" style="background-image: url('images/collection-christmas.jpg');"></div>
+          <div class="collection-overlay"></div>
+          <div class="collection-content">
+            <h3>Christmas Edit</h3>
+            <p>Perfect gifts for loved ones</p>
+            <button class="collection-btn">Shop Christmas</button>
+          </div>
+        </div>
+
+        <div class="collection-card" onclick="filterProducts('spring'); scrollToSection('products')">
+          <div class="collection-bg" style="background-image: url('images/collection-spring.jpg');"></div>
+          <div class="collection-overlay"></div>
+          <div class="collection-content">
+            <h3>Spring Arrivals</h3>
+            <p>Fresh styles for new beginnings</p>
+            <button class="collection-btn">Shop Spring</button>
+          </div>
+        </div>
+
+        <div class="collection-card" onclick="filterProducts('summer'); scrollToSection('products')">
+          <div class="collection-bg" style="background-image: url('images/collection-summer.jpg');"></div>
+          <div class="collection-overlay"></div>
+          <div class="collection-content">
+            <h3>Summer Vibes</h3>
+            <p>Light and breezy essentials</p>
+            <button class="collection-btn">Shop Summer</button>
+          </div>
+        </div>
+
+        <div class="collection-card" onclick="filterProducts('autumn'); scrollToSection('products')">
+          <div class="collection-bg" style="background-image: url('images/collection-autmn.jpg');"></div>
+          <div class="collection-overlay"></div>
+          <div class="collection-content">
+            <h3>Autumn Classics</h3>
+            <p>Warm tones and textures</p>
+            <button class="collection-btn">Shop Autumn</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Discover</p>
+        <h2 id="product-title" class="section-title">All Products</h2>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+        <button class="filter-btn" onclick="filterProducts('fashion')">Fashion</button>
+        <button class="filter-btn" onclick="filterProducts('beauty')">Beauty</button>
+        <button class="filter-btn" onclick="filterProducts('accessories')">Accessories</button>
+        <button class="filter-btn" onclick="filterProducts('winter')">Winter</button>
+        <button class="filter-btn" onclick="filterProducts('holiday')">Holiday</button>
+        <button class="filter-btn" onclick="filterProducts('christmas')">Christmas</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About NenLuxe</h2>
+          <p>Founded on the principles of timeless elegance and uncompromising quality, NenLuxe has been curating exceptional fashion, beauty, and accessories since our inception.</p>
+          <p>We believe that true luxury lies not in excess, but in the perfect harmony of design, craftsmanship, and purpose.</p>
+          <p>Every piece in our collection is thoughtfully selected to embody sophistication that transcends fleeting trends.</p>
+          <p>Our commitment extends beyond aesthetics. We partner with artisans and brands who share our values of ethical sourcing, sustainable practices, and social responsibility.</p>
+          <p>When you choose NenLuxe, you're not just acquiring a product—you're investing in a legacy of excellence.</p>
+        </div>
+
+        <div class="about-image-container">
+          <span>
+            <img class="about-image" src="images/about-NenLuxe.jpg" alt="About NenLuxe" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>NENLUXE</h3>
+          <p>Your destination for thoughtfully crafted luxury—fashion, beauty, and accessories with purpose. Timeless elegance for the moments that matter.</p>
+          <div class="social-links">
+                <a href="#" aria-label="Facebook">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                  </svg>
+                </a>
+              </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="filterProducts('fashion'); scrollToSection('products')">Fashion</a></li>
+            <li><a href="javascript:void(0)" onclick="filterProducts('beauty'); scrollToSection('products')">Beauty</a></li>
+            <li><a href="javascript:void(0)" onclick="filterProducts('accessories'); scrollToSection('products')">Accessories</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('collections')">Collections</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Customer Care</h3>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openOrders()">Track Order</a></li>
+            <li><a href="javascript:void(0)" onclick="openHelp()">Help Center</a></li>
+            <li><a href="javascript:void(0)" onclick="openHelp()">Returns</a></li>
+            <li><a href="javascript:void(0)" onclick="openHelp()">Shipping Info</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <p>Email: support@nenluxe.com</p>
+          <p>Phone: +1 234 567 8900</p>
+          <p style="margin-top: 16px;">Mon–Fri: 9 AM–6 PM EST</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 NenLuxe. All rights reserved. Designed with elegance.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <button class="modal-back" id="modalBackBtn" style="display:none" onclick="modalBack()">←</button>
+          <div class="modal-title" id="modalTitle">Modal</div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
