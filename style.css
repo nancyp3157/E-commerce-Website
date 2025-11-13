@@ -1388,3 +1388,160 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 56px;
+  }
+  .about-content {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-center {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .collections-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 36px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .search-input input {
+    width: 100px;
+  }
+
+  .hero {
+    height: 80vh;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image-container {
+    height: 300px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    max-width: 90%;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-arrow {
+    display: none;
+  }
+
+  .hero-indicators {
+    left: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 12px;
+  }
+
+  .hero-btn {
+    padding: 10px 24px;
+    font-size: 12px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-input {
+    display: none;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+  }
+
+  .footer-section p {
+    font-size: 14px;
+  }
+
+  .collection-content h3 {
+    font-size: 24px;
+  }
+
+  .bestseller-scroll {
+    padding: 10px 20px;
+  }
+
+  .bestseller-card {
+    flex: 0 0 240px;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 14px;
+  }
+}
+
+}
