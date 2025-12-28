@@ -5,7 +5,7 @@ It includes user login, signup, wishlist, add to cart, and product view using a 
 
 A simple backend is used to store user data so that every time a user logs in, their previous data is loaded.
 
-##Features:
+##*Features:*
 
 
 User Signup and Login
@@ -23,7 +23,7 @@ Product details shown in a modal popup
 User data is restored on every login
 
 
-##How It Works:
+##*How It Works:*
 
 
 User creates an account using signup
@@ -39,7 +39,7 @@ User can add or remove products
 All changes are saved automatically
 
 
-##Frontend: 
+##*Frontend:* 
 
 
 HTML
