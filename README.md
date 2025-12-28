@@ -5,7 +5,7 @@ It includes user login, signup, wishlist, add to cart, and product view using a 
 
 A simple backend is used to store user data so that every time a user logs in, their previous data is loaded.
 
-##*Features:*
+##**Features:**
 
 
 User Signup and Login
